@@ -1,21 +1,31 @@
+import { getColorFromImage } from "../../config/helpers/get-colors";
 import { Pokemon } from "../../domain/entieties/pokemon";
-import { PokeAPIPokemon } from "../interfaces/pokeApi.interfaces";
+import { PokeAPIPokemon, Ability } from '../interfaces/pokeApi.interfaces';
 
 
 
 export class PokemonMapper {
 
-    static pokeApiPokemonToEntity( data: PokeAPIPokemon): Pokemon {
+    static async pokeApiPokemonToEntity( data: PokeAPIPokemon): Promise<Pokemon>{
 
         const sprites = PokemonMapper.getSprites(data);
         const avatar = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`;
+        
+        const color = await getColorFromImage(avatar);
         
         return {
             id: data.id,
             name: data.name,
             avatar: avatar,
             sprites: sprites,
-            types: data.types.map( type => type.type.name)    
+            types: data.types.map( type => type.type.name),
+            color: color,
+            games: data.game_indices.map( game => game.version.name),
+            stats: data.stats.map( stat => ({name: stat.stat.name, value: stat.base_stat}) ),
+            abilities: data.abilities.map( ability => ability.ability.name),
+            moves: data.moves
+              .map( move => ({name: move.move.name, level: move.version_group_details[0].level_learned_at}))
+              .sort( (a, b) => a.level - b.level )
         }
 
     }
