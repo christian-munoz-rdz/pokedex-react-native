@@ -21,7 +21,7 @@ export const PokemonCard = ({pokemon}: Props) => {
       <Card style={[ styles.cardContainer, {backgroundColor: pokemon.color } ]}>
 
           <Text style={styles.name} variant="bodyLarge" lineBreakMode="middle">
-              { pokemon.name }
+              { pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1) }
               { '\n#' + pokemon.id}
           </Text>
 
