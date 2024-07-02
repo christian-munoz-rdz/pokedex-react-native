@@ -1,79 +1,82 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Pokedex App
 
-# Getting Started
+### indice 
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+- [Descripción](#descripción)
+- [Tecnologías](#tecnologías)
+- [Pantalla de inicio](#pantalla-de-inicio)
+- [Detalles de un Pokemon](#detalles-de-un-pokemon)
+- [Buscar Pokemon](#buscar-pokemon)
 
-## Step 1: Start the Metro Server
+## Descripción
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+Exta es una aplicación para android desarrollada con react native que permite visualizar la información de diferentes pokemones utilizando la API de [PokeApi](https://pokeapi.co/). Podemos visualizar la lista completa de pokemones en la pantalla de inicio, revisar detalles de cada uno de ellos y buscar pokemones por nombre o id.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+## Tecnologías
 
-```bash
-# using npm
-npm start
+<div style="display: flex; justify-content: center;">
+<table>
+   <thead>
+      <tr>
+         <th>Tecnologías</th>
+         <th></th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td><a href="https://reactnative.dev/">React Native</a></td>
+         <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png" width=50></td>
+      </tr>
+      <tr>
+         <td><a href="https://reactnavigation.org/">React Navigation</a></td>
+         <td><img src="https://avatars.githubusercontent.com/u/29647600?s=280&v=4" width=50></td>
+      </tr>
+      <tr>
+         <td><a href="https://reactnativepaper.com/">React Native Paper</a></td>
+         <td><img src="https://raw.githubusercontent.com/callstack/react-native-paper/HEAD/docs/static/images/paper-logo.svg?sanitize=true" height=50></td>
+      </tr>
+      <tr>
+         <td><a href="https://axios-http.com/">Axios</a></td>
+         <td><img src="https://axios-http.com/assets/logo.svg" width=120></td>
+      </tr>
+      <tr>
+         <td><a href="https://tanstack.com/query/latest">TanStack Query</a></td>
+         <td><img src="https://tanstack.com/_build/assets/logo-color-600w-Bx4vtR8J.png" width=50></td>
+      </tr>
+      <tr>
+         <td><a href="https://www.typescriptlang.org/">TypeScript</a></td>
+         <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png" width=50></td>
+      </tr>
+   </tbody>
+</table>
+</div>
 
-# OR using Yarn
-yarn start
-```
+## Pantalla de inicio
 
-## Step 2: Start your Application
+En la pantalla de inicio se muestra una lista de pokemones con su nombre, id, tipo y su avatar. Los Pokemones están ordenados por id de forma ascendente, según la generación en la que fueron introducidos. Se utiliza una `flatlist` para mostrar los pokemones y una tarjeta de [react native paper](https://reactnativepaper.com/)  como `render item`. Cada tarjeta se colorea según los pixeles del avatar utilizando la librería [react native image colors](https://www.npmjs.com/package/react-native-image-colors).
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+<div style="display: flex; justify-content: space-between;"> 
+   <img src="screenshots/Home_Screen_01.png" height="400">
+   <img src="screenshots/Home_Screen_02.png" height="400">
+   <img src="screenshots/Home_Screen_03.png" height="400">
+</div>
 
-### For Android
+## Detalles de un Pokemon
 
-```bash
-# using npm
-npm run android
+Al hacer click en una tarjeta de pokemon se abre una pantalla con los detalles del pokemon seleccionado. En esta pantalla se muestra el avatar del pokemon, su nombre, id, tipo, habilidades, stats, movimientos y los juegos en los que ha aparecido. Además se muestra una colección de sprites del pokemon. También se adapta el color de la pantalla según los pixeles del avatar del pokemon.
 
-# OR using Yarn
-yarn android
-```
+<div style="display: flex; justify-content: space-between;"> 
+   <img src="screenshots/Details_01.png" height="400">
+   <img src="screenshots/Details_02.png" height="400">
+   <img src="screenshots/Details_03.png" height="400">
+</div>
 
-### For iOS
+## Buscar Pokemon
 
-```bash
-# using npm
-npm run ios
+Esta pantalla muestra las tarjetas en el mismo estilo que la pantalla de inicio, pero solo muestra los pokemones que coinciden con el texto ingresado en el campo de búsqueda según su nombre o id. Se utiliza un `TextInput` para ingresar el texto de búsqueda y un `flatlist` para mostrar los pokemones. Además se manejan debounces para evitar realizar peticiones a la API en cada cambio de texto.
 
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+<div style="display: flex; justify-content: space-between;"> 
+   <img src="screenshots/Search_Screen_01.png" height="400">
+   <img src="screenshots/Search_Screen_02.png" height="400">
+   <img src="screenshots/Search_Screen_03.png" height="400">
+</div>
